@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Madimi+One&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="store.css">
+    <title>Inventory</title>
+</head>
+<body>
+    <div class="header">
+        <div class="home-name">
+            <p>MediBuddy</p>
+        </div>
+
+        <div class="image-container">
+            <img src="images/store-wave.png" class="image">
+            <div>
+                <img src="images/pharmacy.jpg" class="pharmacy-image">
+            </div>
+            <div class="note-seller">
+                <p class="become">
+                    <u>Inventory </u>
+                </p>
+            </div>
+             
+
+        <div class="form-container">
+            <form id="add-product-form">
+                <input type="text" id="medicine-name" placeholder="Medicine Name">
+                <input type="text" id="medicine-mrp" placeholder="MRP">
+                <textarea id="medicine-description" placeholder="Description"></textarea>
+                <input type="number" id="medicine-quantity" placeholder="Quantity">
+                <input type="text" id="expiry-date" placeholder="Expiry Date">
+                <input type="text" id="shop-name" placeholder="Shop Name">
+                <button type="submit" class="add-button">Add Product</button>
+            </form>
+        </div>
+
+        <script>
+            document.getElementById('add-product-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                // Get input values
+                var name = document.getElementById('medicine-name').value;
+                var mrp = document.getElementById('medicine-mrp').value;
+                var description = document.getElementById('medicine-description').value;
+                var quantity = document.getElementById('medicine-quantity').value;
+                var shop = document.getElementById('shop-name').value;
+
+                // Create new product element
+                var newProduct = document.createElement('div');
+                newProduct.classList.add('meds');
+                newProduct.innerHTML = `
+                    <div class="meds-image">
+                        <img src="images/placeholder.jpg" class="thumbnail">
+                    </div>
+                    <div class="info">
+                        <p class="title">${name}</p>
+                        <p class="mrp">MRP: ${mrp}</p>
+                        <p class="description">${description}</p>
+                        <p class="quantity">Quantity: ${quantity}</p>
+                        <p class="shop-name">Shop: ${shop}</p>
+                    </div>
+                `;
+
+                // Append new product to inventory
+                document.querySelector('.container-meds').appendChild(newProduct);
+
+                // Reset form fields
+                document.getElementById('add-product-form').reset();
+            });
+        </script>
+    </div>
+</body>
+</html>
